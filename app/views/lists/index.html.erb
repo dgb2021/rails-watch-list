@@ -1,0 +1,34 @@
+<nav class="navbar navbar-light bg-light justify-content-end">
+  <button class="btn btn-outline-success" type="button">My List</button>
+  <%= link_to new_list_path do  %>
+    <button class="btn btn-outline-success" type="button">New List</button>
+  <% end %> 
+</nav>
+
+<div class="jumbotron jumbotron-fluid">
+    <img src="" alt="">
+      <h1 class="display-3 text-center">Doug's Move List App</h1>
+      <p class="lead text-center">Build lists of your favourite movies!!!!</p>
+</div>
+
+<div class="d-flex justify-content-center m-4">
+  <%= link_to new_list_path do  %>
+    <button type="button" class="btn btn-primary">Create a Movie List</button>
+  <% end %>
+</div>
+
+<div class="container">
+  <div class="row justify-content-between">
+    <% @lists.each do |list| %>
+      <tr>
+          <div class="card text-center m-3" class="col-sm-4" style="width: 18rem;">
+            <img class="card-img-top" src="https://images.unsplash.com/photo-1460881680858-30d872d5b530?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80" alt="Card image cap">
+              
+              <a href="#" class="btn btn-primary m-3"> <%= list.name %></a>
+          </div>
+      </tr>
+    <% end %>
+  </div>
+</div>
+
+
