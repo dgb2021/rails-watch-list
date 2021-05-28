@@ -1,11 +1,33 @@
-chuck a form in here for entering a new movie 
-
-<h1> list show page</h1>
 
 <div class="container">
   <div class="row">
     <div class="col-6 col-offset-3">
-    
+      <%= simple_form_for [@list, @bookmark], method: :post, url: list_bookmarks_path(@list) do |f| %>
+        <%= f.input :comment %>
+        <%= f.association :movie %>
+        <%= f.submit %>
+      <% end %>
     </div>
+  </div>
+</div>
+
+<button>DELETE</button>
+
+<div class="container">
+  <div class="row justify-content-between">
+    
+    
+    <% @list.movies.each do |movie| %>
+      <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
+      
+      <%= movie.title %>
+      <tr>
+          <div class="card text-center m-3" class="col-sm-4" style="width: 18rem;">
+            <img class="card-img-top" src="https://images.unsplash.com/photo-1460881680858-30d872d5b530?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80" alt="Card image cap">
+              
+              <a href="#" class="btn btn-primary m-3"> <%= movie.title %></a>
+          </div>
+      </tr>
+    <% end %>
   </div>
 </div>
