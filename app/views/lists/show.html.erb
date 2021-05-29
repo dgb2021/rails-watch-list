@@ -1,7 +1,19 @@
+<nav class="bg-dark navbar-dark">
+  <div class="container">
+    <a href="" class="navbar-brand"><i class="fas fa-film mr-2"></i> <%= @list.name %></a>
+  </div>
+</nav>
 
+<section id="header" class="jumbotron text-center">
+  <h1 class="display-3"> <%= @list.name %></h1>
+    <p class="lead">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+      <button class="btn btn-outline-success"><%= link_to 'Home', lists_path %></button>
+      <button class="btn btn-outline-success" type="button"><%= link_to 'New List', new_list_path %></button>
+</section>
+  
 <div class="container">
-  <div class="row">
-    <div class="col-6 col-offset-3">
+  <div class="row justify-content-center mt-2">
+    <div class="col-4 col-offset-">
       <%= simple_form_for [@list, @bookmark], method: :post, url: list_bookmarks_path(@list) do |f| %>
         <%= f.input :comment %>
         <%= f.association :movie %>
@@ -10,26 +22,29 @@
     </div>
   </div>
 </div>
- 
-<button type="button" class="btn btn-primary">
-  <%= link_to 'Home', lists_path %>
-</button>
 
-<div class="container">
-  <div class="row justify-content-between">
-    
-    
-    <% @list.movies.each do |movie| %>
-      <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
+<div  class="container py-5"  >  
+  <div class="row">
+    <div class="col-4 colsm-6 col-md-4 mb-3">
       
-      <%= movie.title %>
-      <tr>
-          <div class="card text-center m-3" class="col-sm-4" style="width: 18rem;">
-            <img class="card-img-top" src="https://images.unsplash.com/photo-1460881680858-30d872d5b530?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80" alt="Card image cap">
-              
-              <a href="#" class="btn btn-primary m-3"> <%= movie.title %></a>
+      <% @list.movies.each do |movie| %>
+        <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
+        
+        <img src="<%= movie.poster_url %>" alt="" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title"><%= movie.title %></h5>
+              <p class="card-text"> <%= movie.overview %> </p>
+              <a href="" class="btn btn-outline-success btn-sm">Read More</a>
+              <a href="" class="btn btn-outline-danger btn-sm"><i class="far fa-heart"></i></a>
           </div>
-      </tr>
-    <% end %>
+        <% end %>  
+        
+    </div>
   </div>
 </div>
+
+
+
+
+
+

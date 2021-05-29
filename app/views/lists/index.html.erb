@@ -1,8 +1,5 @@
 <nav class="navbar navbar-light bg-light justify-content-end">
-  <button class="btn btn-outline-success" type="button">My List</button>
-  <%= link_to new_list_path do  %>
-    <button class="btn btn-outline-success" type="button">New List</button>
-  <% end %> 
+    <button class="btn btn-outline-success" type="button"><%= link_to 'New List', new_list_path %></button>
 </nav>
 
 <div class="jumbotron jumbotron-fluid">
